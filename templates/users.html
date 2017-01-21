@@ -1,0 +1,66 @@
+<style>
+.input-group
+{
+	margin-bottom:2%;
+}
+
+</style>
+<div class="row" ng-controller="usersController">
+
+	<h2>{{ title }}</h2>
+	<p>Please note that the users shown below are the students that would take the available tests shown under the test section.</p>		
+	<div ng-hide="message_hide" class="alert alert-{{ class }}" role="alert">{{ message }}</div>
+	<div class='table-responsive' >
+	<table class='table'>
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>User Name</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in users">
+				<th>{{ user.user_id }}</th>
+				<td>{{ user.username }}</td>
+				<td>{{ user.name| uppercase }}</td>
+				<td>{{ user.email|lowercase }}</td>
+
+				<td>
+					<button  class="btn btn-primary" ng-click="updateUser(user.user_id)">update</button>
+					<button  class="btn btn-danger" ng-click="deleteUser(user)" >delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+	<div class='row' ng-hide="form_hide">	
+	<hr>
+		<div class="col-md-2"></div>	
+		<div class="col-md-8">	
+
+			<h3>{{ subtitle }}</h3>
+			<div class="input-group">
+			  <span class="input-group-addon " id="basic-addon1">@</span>
+			  <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1" ng-model="mtn_user.username">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon glyphicon glyphicon-user" id="basic-addon1"></span>
+			  <input type="text" class="form-control" placeholder="Name" aria-describedby="basic-addon1" ng-model="mtn_user.name">
+			</div>
+
+			<div class="input-group">
+			  <span class="input-group-addon glyphicon glyphicon-envelope" id="basic-addon1"></span>
+			  <input type="text" class="form-control" placeholder="Email" aria-describedby="basic-addon1" ng-model="mtn_user.email">
+			</div>
+			<button class="btn btn-success" ng-click="mtn_save()">Save</button>
+			<button class="btn btn-default" ng-click="mtn_cancel()">Cancel</button>
+		</div>
+		</div>
+		<div class="col-md-2"></div>
+	</div>
+</div>
+

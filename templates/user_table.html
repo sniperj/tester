@@ -1,0 +1,26 @@
+	<div class='table-responsive' >
+	<table class='table'>
+		<thead>
+			<tr>
+				<th>User Id</th>
+				<th>User Name</th>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="user in users">
+				<th>{{ user.user_id }}</th>
+				<td>{{ user.username }}</td>
+				<td>{{ user.name| uppercase }}</td>
+				<td>{{ user.email|lowercase }}</td>
+
+				<td>
+					<button  class="btn btn-primary" ng-click="updateUser(user)">update</button>
+					<button  class="btn btn-danger" ng-click="deleteUser(user)" >delete</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
